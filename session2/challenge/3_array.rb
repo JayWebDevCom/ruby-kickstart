@@ -7,5 +7,8 @@
 
 class String
   def every_other_char
+	  return_str = ""
+	  	self.length.times.reject{|i| i.odd?}.each{|i| return_str << self[i]}
+	  return_str
   end
 end

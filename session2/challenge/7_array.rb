@@ -8,3 +8,11 @@
 # alternate_words("Lorem ipsum dolor sit amet.")  # => ["Lorem", "dolor", "amet"]
 # alternate_words("Can't we all get along?")      # => ["Can't", "all", "along"]
 # alternate_words("Elementary, my dear Watson!")  # => ["Elementary", "dear"]
+
+def alternate_words(string)
+	new_arr = []
+	(1..string.split(" ").length).to_a.reject { |t| t.even? }.each{ |r| new_arr <<  string.split(' ')[r-1] }
+	new_arr
+end
+
+puts alternate_words("Elementary, my dear Watson!") 

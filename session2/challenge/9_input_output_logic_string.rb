@@ -24,7 +24,11 @@
 # USER:     BYE
 
 def deaf_grandma
-
+	line = gets.chomp
+		while line != "BYE"
+		puts line == line.upcase && !line.empty? ? "NO, NOT SINCE 1938!" : "HUH?! SPEAK UP, SONNY!"
+		line = gets.chomp
+		end
 end
 
 

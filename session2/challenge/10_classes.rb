@@ -16,4 +16,17 @@
 #
 
 class Person
+	
+		attr_accessor 'name', 'age'
+		
+		def initialize(name, birthday)
+			@name = name
+			@age = birthday
+		end
+
+		def birthday
+			@age += 1	
+			@age
+		end			
+	
 end

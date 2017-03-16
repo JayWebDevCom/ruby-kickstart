@@ -14,3 +14,12 @@
 # prime_chars? ['ab', 'cd']       # => false
 # prime_chars? ['a', 'bcd']       # => false
 # prime_chars? ['a', 'b', 'cd']   # => false
+
+
+def prime_chars(array)
+	new_arr = []
+	array.join('').length.+(1).times { |i|
+	new_arr << i+1 if ( array.join('').length % (i+1) == 0 )
+	}
+	puts new_arr.length > 2 ? false : true
+end

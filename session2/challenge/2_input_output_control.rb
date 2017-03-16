@@ -19,11 +19,15 @@
 # and when you think it is correct, you can test it with  $ rake 2:2
 
 def hi_hi_goodbye
-  # your code here
+  ask_again = true
+  loop do
+	  puts "Enter a number"
+	  entered = gets.chomp
+	  break if ['Bye', 'bye'].include? entered
+	  puts "hi " * entered.to_i
+	end
+	puts "goodbye"
 end
-
-
-
 
 # This will just invoke the method if you run this program directly
 # This way you can try it out by running "$ ruby 2_input_output_control.rb" 

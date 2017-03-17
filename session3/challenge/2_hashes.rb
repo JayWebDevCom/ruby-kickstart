@@ -15,7 +15,3 @@ def staircase(num)
 		}
 	hash	
 end
-
-puts staircase(5)
-
-

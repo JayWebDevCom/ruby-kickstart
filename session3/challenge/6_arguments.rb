@@ -13,7 +13,29 @@
 # match_maker true,  false, true                # => [true]
 # match_maker true,  true,  false               # => [true]
 # match_maker true,  true,  true, false, true   # => [false, true]
-# match_maker true,  true,  true, false, nil    # => [false, false]
+# match_maker true,  true,  true, false, nil    # => [false, false] ---
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
+# match_maker true, true, true, 0,  nil				  # => false, true] ---
+# match_maker true, nil, false, :abc, /abc/					# => [false, false] ---
 
+
+def match_maker(a, *b)
+	array = (0...b.count).to_a
+	new_array = []
+	answer = []
+	array.each_slice(2){ |i| new_array << i }
+	
+if a == false
+	new_array.each { |i| 
+		b[i[0]], b[i[1]] = !!b[i[0]], !!b[i[1]]
+		b[i[0]] == b[i[1]] ? answer << true  : answer << false }
+
+elsif a == true
+	new_array.each { |i|		
+		b[i[0]], b[i[1]] = !!b[i[0]], !!b[i[1]]
+		b[i[0]] != b[i[1]]  ? answer << true  : answer << false }
+else
+end
+answer
+end

@@ -29,4 +29,16 @@
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
 def shared(a, b)
+	hash = Hash.new
+	c = a + b
+	c.each { |i| 
+	array = Array.new
+	a.include?(i) ? array[0] = true : array[0] = nil
+	b.include?(i) ? array[1] = true : array[1] = nil
+	hash[i] = array }
+	last_array = []
+	c.uniq.each { |i| last_array.push(i) if a.include?(i) && b.include?(i) }
+	return_array = []
+	return_array[0], return_array[1] = hash, last_array
+	return_array
 end

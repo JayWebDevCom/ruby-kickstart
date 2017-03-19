@@ -1,4 +1,3 @@
-# This problem is based off of example 2
 # Modify it so that it also tracks a person's age and a quote
 # Allow any of these to be set with a hash as well, but the block should overwrite the hash
 #
@@ -26,14 +25,17 @@
 
 
 class Person
-  attr_accessor :name
+  attr_accessor :name, :age, :quote
 
-  def initialize(&initializer)
-    @initializer = initializer
-    initializer.call self
+  def initialize(options = Hash.new, &the_block)
+	  @block = the_block || Proc.new { |person| }
+    @name = options[:name]
+    @age = options[:age]
+    @quote = options[:quote]
+    @block.call self
   end
 
   def reinit
-    @initializer.call self
+    @block.call self
   end
 end

@@ -27,7 +27,16 @@
 #
 #
 # create it from scratch :)
+# I found this very very difficult
+def pathify(hash = Hash.new)
+return hash.map { |path| '/' + path } if hash.is_a? Array
+return_array = []
 
-
-def pathify
+	hash.each { |k,v| 
+	key = '/' + k
+	child_paths = pathify v
+	
+	child_paths.each { |i| return_array << (key + i) }
+		 }
+return_array		 
 end

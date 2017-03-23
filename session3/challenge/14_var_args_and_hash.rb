@@ -37,7 +37,7 @@ end
 
 def count_clumps(*b)
 	arr = [].push(b).flatten
-	arr.slice_when{ |a,b| a != b }.to_a .reject{ |t| t.size < 2}.count
+	arr.slice_when{ |a,b| a != b }.to_a.reject{ |t| t.size < 2}.count
 end
 
 def same_ends(a,*b)
@@ -49,7 +49,7 @@ def same_ends(a,*b)
 end
 
 
-p problem_14 1, 1, 2, 1, 1
+#p problem_14 1, 1, 2, 1, 1
 #problem_14 1, 2, 2, 3, 4, 4, :problem => :count_clumps		 # => 2
 #problem_14 1, 1, 2, 1, 1,    :problem => :count_clumps		 # => 2
 #problem_14 1,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => false

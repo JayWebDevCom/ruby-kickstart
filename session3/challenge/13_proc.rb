@@ -35,7 +35,7 @@
 # end   # => [0, 22, 24, 42, 44, 47, 66, 68, 68, 89]
 #
 #
-# sorted by second letter (don't worry about things like 'the' vs 'The'):
+# sorted by second letter (don't worry about things lsike 'the' vs 'The'):
 # your_sort %w(The quick brown fox jumps over the lazy dog) do |a, b|
 #   a[1..1] <=> b[1..1]
 # end   # => ["lazy", "The", "the", "fox", "dog", "brown", "jumps", "quick", "over"]
@@ -52,5 +52,41 @@
 #   end
 # end       # => ["a", "m", "r", 1, 3, 4, 9, 2.5, 9.0, 25.8]
 
-def your_sort
+def your_sort(array, &block)
+	block ||= Proc.new { |a,b| a <=> b }
+	array.each_index do |index1|
+    array.each_index do |index2|
+	    
+      order = block.call(array[index1], array[index2])
+      
+			array[index1], array[index2] = array[index2], array[index1] if order < 0
+      array[index1], array[index2] = array[index1], array[index2] if order == 0
+      array[index2], array[index1] = array[index2], array[index1] if order > 0
+      
+    end
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -21,11 +21,38 @@
 # problem_14 2,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => true
 # problem_14 3,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => false
 
-def problem_14
+def problem_14(*b)
+problem = b.last[:problem] ||= :count_clumps if b.last.is_a?(Hash)
+b.pop if b.last.is_a?(Hash)
+
+	case problem
+		when :same_ends
+			a = b.shift
+			same_ends(a,*b)
+		else
+			count_clumps(*b)
+		end
+
 end
 
-def same_ends
+def count_clumps(*b)
+	arr = [].push(b).flatten
+	arr.slice_when{ |a,b| a != b }.to_a .reject{ |t| t.size < 2}.count
 end
 
-def count_clumps
+def same_ends(a,*b)
+	arr = [].push(a).push(b).flatten
+	dec = arr.shift
+	one = arr.last(dec)
+	two = arr.first(dec)
+	one == two && one.size == dec ? true : false
 end
+
+
+p problem_14 1, 1, 2, 1, 1
+#problem_14 1, 2, 2, 3, 4, 4, :problem => :count_clumps		 # => 2
+#problem_14 1, 1, 2, 1, 1,    :problem => :count_clumps		 # => 2
+#problem_14 1,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => false
+#problem_14 2,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => true
+#problem_14 3,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => false
+#same_ends 1, 5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => false

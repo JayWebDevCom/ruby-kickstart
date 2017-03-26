@@ -38,3 +38,36 @@
 # middle head                        # => 3
 # head = {:data => 6, :next => head}
 # middle head                        # => 3
+
+# I needed a lot of help with this and still need to go over it more before fully understanding
+# My problem is that I do not know where the list begins and where it ends.
+# I am not so clear on what exactly linked lists are
+
+def middle(hash = {})
+   info = extract(hash)
+   info[info.size/2]
+end
+
+def extract(hash = {}, results = Array.new )
+  hash.each { |k,v|
+    if v.is_a?(Hash)
+      extract(v, results)
+    else
+      results << v unless v.nil?
+    end
+  }
+  results
+end
+
+# head = {:data => 1, :next => nil}
+# middle head                        # => 1
+# head = {:data => 2, :next => head}
+# middle head                        # => 1
+# head = {:data => 3, :next => head}
+# middle head                        # => 2
+# head = {:data => 4, :next => head}
+# middle head                        # => 2
+# head = {:data => 5, :next => head}
+# middle head                        # => 3
+# head = {:data => 6, :next => head}
+

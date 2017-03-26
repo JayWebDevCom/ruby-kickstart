@@ -15,3 +15,22 @@
 # head = {:data => 6, :next => head}
 # print_list head                    # >> "6\n5\n4\n3\n2\n1\n"
 
+
+# I needed a lot of help with this and still need to go over it more before fully understanding
+# I am not so clear on what exactly linked lists are
+
+def print_list(hash = {})
+  puts extract(hash)
+end
+
+
+def extract(hash = {}, results = Array.new)
+  hash.each { |k,v|
+    if v.is_a?(Hash)
+      extract(v, results)
+    else
+      results << v unless v.nil?
+    end
+  }
+  results
+end

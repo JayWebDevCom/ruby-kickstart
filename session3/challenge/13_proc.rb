@@ -52,7 +52,7 @@
 #   end
 # end       # => ["a", "m", "r", 1, 3, 4, 9, 2.5, 9.0, 25.8]
 
-
+# I found this very challenging. I need to read up more
 def your_sort(array, &block)
 	block ||= Proc.new { |a,b| a <=> b }
 	array.each_index do |index1|

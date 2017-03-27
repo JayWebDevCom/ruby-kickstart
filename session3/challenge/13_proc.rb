@@ -53,19 +53,33 @@
 # end       # => ["a", "m", "r", 1, 3, 4, 9, 2.5, 9.0, 25.8]
 
 # I found this very challenging. I need to read up more
+# Update, I understand this now
+
 def your_sort(array, &block)
 	block ||= Proc.new { |a,b| a <=> b }
-	array.each_index do |index1|
-    array.each_index do |index2|
-	    
-      order = block.call(array[index1], array[index2])
+	
+	# for each array element
+	array.length.times do |first_val|
+		
+		#compare element to every other element including itself
+		array.length.times do |second_val|
+		    
+		    # the comparison results in 1, 0 or -1 
+      order = block.call(array[first_val], array[second_val])
       
-			array[index1], array[index2] = array[index2], array[index1] if order < 0
-      array[index1], array[index2] = array[index1], array[index2] if order == 0
-      array[index2], array[index1] = array[index2], array[index1] if order > 0
-      
+      #redistribute/reassign the array elements based on the block result
+      case order
+	      when -1
+	      	array[first_val], array[second_val] = array[second_val], array[first_val]
+	      #when 0
+	      	#array[first_val], array[second_val] = array[first_val], array[second_val]
+	      when 1
+	      	array[second_val], array[first_val] = array[second_val], array[first_val]
+				#else
+				end      
     end
   end
+  array # return array because array might be [] i.e. size of zero 
 end
 
 

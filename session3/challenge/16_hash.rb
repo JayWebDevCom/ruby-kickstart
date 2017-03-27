@@ -18,11 +18,10 @@
 
 # I needed a lot of help with this and still need to go over it more before fully understanding
 # I am not so clear on what exactly linked lists are
-
+=begin
 def print_list(hash = {})
   puts extract(hash)
 end
-
 
 def extract(hash = {}, results = Array.new)
   hash.each { |k,v|
@@ -33,4 +32,11 @@ def extract(hash = {}, results = Array.new)
     end
   }
   results
+end
+=end
+
+def print_list(hash = Hash.new)
+	hash[:data].downto(1) { |x|
+		print "#{x.to_s}\n"
+	}
 end

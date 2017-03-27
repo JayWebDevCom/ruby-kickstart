@@ -52,6 +52,7 @@
 #   end
 # end       # => ["a", "m", "r", 1, 3, 4, 9, 2.5, 9.0, 25.8]
 
+=begin
 def your_sort(array, &block)
 	block ||= Proc.new { |a,b| a <=> b }
 	array.each_index do |index1|
@@ -66,27 +67,9 @@ def your_sort(array, &block)
     end
   end
 end
+=end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def your_sort(arr, &block)
+	block ||= Proc.new { |a,b| a <=> b }
+		arr.sort(&block)
+end

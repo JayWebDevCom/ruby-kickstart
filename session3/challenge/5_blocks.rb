@@ -11,17 +11,33 @@ two_d = [
   [13, 12, 11, 10, 9],
 ]
 
-
-
 # order = []
 # spiral_access two_d do |i|
 #   order << i
 # end
 # order # => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
 
+# I met with my mentor and I now have a much better understanding and command of this
 
-blockj = Proc.new { |i| i }
+class Array
+	def rotate_anti
+		self.map(&:reverse).transpose
+	end
+end
 
 def spiral_access(array, &block)
-	array.flatten.sort.each.map(&block)
+	
+ret = []
+
+	until array.count == 0
+		ret << array.shift
+		array = array.rotate_anti
+	end
+	
+	
+	if block
+			ret.flatten.each { |i| block.call(i) }
+	else
+		ret.flatten
+	end
 end
